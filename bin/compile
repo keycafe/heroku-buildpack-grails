@@ -100,6 +100,7 @@ fi
 GRAILS_VERSION=$(get_property $BUILD_DIR/application.properties 'app.grails.version')
 
 echo "-----> Grails $GRAILS_VERSION app detected"
+echo "-----> Keycafe Grails Build Pack"
 echo "       WARNING: The Grails buildpack is currently in Beta."
 
 if [ ! -d $CACHE_DIR ] ; then
