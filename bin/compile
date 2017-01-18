@@ -140,6 +140,7 @@ fi
 # JAVA_HOME is exported in install_java
 export GRAILS_HOME=$CACHE_DIR/$GRAILS_DIR
 export PATH=$GRAILS_HOME/bin:$PATH
+export GRAILS_OPTS="-server -Xmx1024m -Xms64M -XX:PermSize=32m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8"
 
 cd $BUILD_DIR
 
