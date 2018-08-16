@@ -100,7 +100,7 @@ fi
 GRAILS_VERSION=$(get_property $BUILD_DIR/application.properties 'app.grails.version')
 
 echo "-----> Grails $GRAILS_VERSION app detected"
-echo "-----> Keycafe Grails Build Pack"
+echo "-----> Keycafe (Increased Memory) Grails Build Pack"
 echo "       WARNING: The Grails buildpack is currently in Beta."
 
 if [ ! -d $CACHE_DIR ] ; then
@@ -141,7 +141,7 @@ fi
 # JAVA_HOME is exported in install_java
 export GRAILS_HOME=$CACHE_DIR/$GRAILS_DIR
 export PATH=$GRAILS_HOME/bin:$PATH
-export GRAILS_OPTS="-server -Xmx1024m -Xms64M -XX:PermSize=32m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8"
+export GRAILS_OPTS="-server -Xmx2048m -Xms1024M -XX:PermSize=32m -XX:MaxPermSize=256m -Dfile.encoding=UTF-8"
 
 cd $BUILD_DIR
 
