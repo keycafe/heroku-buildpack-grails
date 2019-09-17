@@ -100,7 +100,7 @@ fi
 GRAILS_VERSION=$(get_property $BUILD_DIR/application.properties 'app.grails.version')
 
 echo "-----> Grails $GRAILS_VERSION app detected"
-echo "-----> Keycafe (Increased Memory) Grails Build Pack"
+echo "-----> Keycafe (Increased Memory, TSL Upgrade) Grails Build Pack"
 echo "       WARNING: The Grails buildpack is currently in Beta."
 
 if [ ! -d $CACHE_DIR ] ; then
@@ -177,7 +177,7 @@ if [ "$GRAILS_VERSION" != "1.3.7" ] ; then
   BUILDCMD_OPT="$BUILDCMD_OPT -plain-output"
 fi
 
-COMPILECMD="$GRAILS_CMD -Divy.default.ivy.user.dir=$CACHE_DIR compile --non-interactive"
+COMPILECMD="$GRAILS_CMD -Divy.default.ivy.user.dir=$CACHE_DIR -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 compile --non-interactive"
 echo "-----> Executing $COMPILECMD"
 eval "$COMPILECMD" | sed -u 's/^/       /'
 check_build_status
