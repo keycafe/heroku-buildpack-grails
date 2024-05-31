@@ -187,6 +187,10 @@ echo "-----> Executing $BUILDCMD"
 eval "$BUILDCMD" | sed -u 's/^/       /'
 check_build_status
 
+# Cleanup unnecessary directories
+echo "Cleaning up unnecessary directories..."
+rm -rf $BUILD_DIR/target/classes
+
 if [ ! -d server ] ; then
 
     mkdir server
