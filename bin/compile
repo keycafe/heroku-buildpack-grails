@@ -119,6 +119,28 @@ install_java ${BUILD_DIR} ${javaVersion}
 jdk_overlay ${BUILD_DIR}
 echo "done"
 
+# Timezone data update
+TZUPDATER_JAR="$BIN_DIR/tzupdater.jar"
+TZDATA="$BIN_DIR/tzdata2026b.tar.gz"
+if [ -f "$TZUPDATER_JAR" ] && [ -f "$TZDATA" ]; then
+  echo "-----> Updating JDK timezone data"
+  java -jar "$TZUPDATER_JAR" -f -l "file://$TZDATA"
+  if [ $? -ne 0 ]; then
+    echo "-----> Error updating timezone data"
+    exit 1
+  fi
+  # Print timezone data version
+  java -jar "$TZUPDATER_JAR" -V
+  if [ $? -ne 0 ]; then
+    echo "-----> Error printing timezone data"
+    exit 1
+  fi
+  echo "-----> Timezone data update complete"
+else
+  echo "-----> Error: tzupdater.jar or data not found"
+  exit 1
+fi
+
 cd $CACHE_DIR
 
 if [ -f $BUILD_DIR/grailsw ] ; then
