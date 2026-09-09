@@ -121,7 +121,7 @@ echo "done"
 
 # Timezone data update
 TZUPDATER_JAR="$BIN_DIR/tzupdater.jar"
-TZDATA="$BIN_DIR/tzdata2026b.tar.gz"
+TZDATA="$BIN_DIR/tzdata2026c.tar.gz"
 if [ -f "$TZUPDATER_JAR" ] && [ -f "$TZDATA" ]; then
   echo "-----> Updating JDK timezone data"
   java -jar "$TZUPDATER_JAR" -f -l "file://$TZDATA"
